@@ -6,7 +6,7 @@ ruby '2.5.7'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.2.3'
 # Use sqlite3 as the database for Active Record
-gem 'pg'  
+gem 'pg'   , '~> 0.20.0'
 # Use Puma as the app server
 gem 'puma', '3.11'
 # Use SCSS for stylesheets
@@ -50,7 +50,7 @@ gem 'jquery-ui-rails', '6.0.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.20.0'
   gem 'rails_12factor'
 end
 
