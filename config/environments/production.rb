@@ -95,7 +95,7 @@ Rails.application.configure do
   # Rotate logs daily to keep individual file sizes down and easier purging
   config.logger = Logger.new("log/#{Rails.env}.log", "daily")
 
-  config.assets.compile = true
+  config.assets.compile = false
 
 config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
   
