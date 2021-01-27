@@ -17,7 +17,7 @@
 //= require materialize-form
 //= require best_in_place
 //= require_tree .
-//= require jquery_ujs
+
 
 
 // @import "materialize";
