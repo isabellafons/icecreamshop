@@ -1,0 +1,10 @@
+
+<% if logged_in? &&  current_user.role?(:admin)  %>
+    <%= render :partial => "admin_index" %>
+<% elsif logged_in? && current_user.role?(:manager) %>
+    <%= render :partial => "manager_index" %>
+<% elsif logged_in? && current_user.role?(:employee) %>
+    <%= render :partial => "employee_index" %>
+<% else %>
+  <%= render :partial => "guest_index" %>
+<% end %>

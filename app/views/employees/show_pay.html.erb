@@ -1,0 +1,16 @@
+<div class = "col s8">
+
+ <div class="card">
+    <div class="card-content">
+       
+            <h4> Pay Statement for <%= @current_user.proper_name %> </h4><br>
+            <h6> Dates <%= @payroll_calc.start_date.to_date.strftime("%-m/%-d/%y") %> to <%= @payroll_calc.end_date.to_date.strftime("%-m/%-d/%y") %> <br></h6>
+
+                <b>Hours Worked:&nbsp;&nbsp;</b><br>
+                        <%= @payroll.hours %><br /><br />
+                <b>Pay:&nbsp;&nbsp;</b><br>
+                    $<%= @pay_earned %><br /><br />
+
+        </div>
+    </div>
+</div>

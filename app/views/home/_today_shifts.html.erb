@@ -1,0 +1,64 @@
+<div class="card">
+  <div class="card-content">
+  <h4>Todays Shift</h4>
+
+    <% if @today_shifts.empty? && @started_shifts.empty? %>
+        <p>No shifts scheduled today!.</p>
+   
+    <% else%>
+
+      <table class="striped highlight">
+        <thead>
+          <th> Date </th>
+          <th> Store Name </th>
+          <th> Start Time </th>
+          <th> End Time </th>
+          <th> Status </th>
+          <th> Option </th>
+
+        </thead>
+        <% if !@today_shifts.empty? %>
+          <% for shift in @today_shifts %>
+            <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+              <td><%= link_to shift.date.strftime("%-m/%d/%y"), shift_path(shift) %></td>
+              <td><%=  shift.assignment.store.name %></td>
+              <td><%=  shift.start_time.strftime("%H:%M") %></td>
+              <td><%=  shift.end_time.strftime("%H:%M") %></td>
+              <td><%=  shift.status.capitalize %></td>
+
+              <td>
+                <%= link_to(shift_button_in_path(shift), method: :post, data: {confirm: "Are you sure you want to clock  in"}, class: 'waves-effect waves-light btn btn-alert') do %>
+                   &nbsp;<%= "clock in" %>
+                  <% end %>
+              <% end %>
+              </td>
+          <%end%>
+          <%  if !@started_shifts.empty? %>
+             <% for shift in @started_shifts %>
+            <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+              <td><%= link_to shift.date.strftime("%-m/%d/%y"), shift_path(shift) %></td>
+              <td><%=  shift.assignment.store.name %></td>
+              <td><%=  shift.start_time.strftime("%H:%M") %></td>
+              <td><%=  shift.end_time.strftime("%H:%M") %></td>
+              <td><%=  shift.status.capitalize %></td>
+
+              <td>
+                <%= link_to(shift_button_out_path(shift), method: :post, data: {confirm: "Are you sure you want to clock out"}, class: 'waves-effect waves-light btn btn-alert') do %>
+                &nbsp;<%= "clock out" %>
+                <% end %>
+              </td>
+            <% end %>
+            
+            <% end %>
+
+
+            <td> 
+          </tr>
+        
+      </table>
+      <p class="supertiny"></p>
+      <br />
+      
+    <% end %>
+  </div>
+</div>

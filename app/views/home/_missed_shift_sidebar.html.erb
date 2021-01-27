@@ -1,0 +1,34 @@
+
+<div class="card">
+  <div class="card-content">
+    <h5> Shifts Missed——Passed 7 Days</h5>
+
+    <table class="striped highlight">
+        <thead>
+          <th>Employees </th>
+          <th> Store </th>
+          <th> Missed Shifts </th>
+        
+        </thead>
+        <% for employee in @missed_employees %>
+        
+          <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+            <td><%= link_to employee.name, employee_path(employee) %></td>
+            <td><%=  link_to employee.current_assignment.store.name, store_path(employee.current_assignment.store) %></td>
+            <td><%=  employee.shifts.for_past_days(7).pending.size %></td>  
+          </tr>
+          
+        <% end %>
+      </table>
+    <p class="supertiny"></p>
+    <br />
+  </div>
+  <div class="card-action">
+   
+</div>
+<% else %>
+<div class="card grey lighten-3">
+  <div class="card-action">
+    
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="card">
+  <div class="card-content">
+  <h4><%= state.capitalize %> Shifts at AMC</h4>
+  
+    <% if shifts.empty? %>
+      <p>There are no shifts at this time.</p>
+   
+    <% else %>
+
+      <table class="striped highlight">
+        <thead>
+          <th> Date </th>
+          <th>Employee</th>
+          <th> Store Name </th>
+          <th> Start Time </th>
+          <th> End Time </th>
+          <th> Status </th>
+
+        
+          <th class="align_center">Options</th>
+          
+        </thead>
+        <% for shift in shifts %>
+          <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+            <td><%=  shift.date.strftime("%-m/%d/%y")%></td>
+            <td><%=  shift.assignment.employee.name %></td>
+            <td><%=  shift.assignment.store.name %></td>
+            <td><%=  shift.start_time.strftime("%H:%M") %></td>
+            <td><%=  shift.end_time.strftime("%H:%M") %></td>
+            <td><%=  shift.status.capitalize %></td>
+            <td class="align_center">
+            <% if (current_user.role?(:admin) || current_user.role?(:manager)) %>
+              
+                <%= link_to edit_shift_path(shift) do %>
+                  <i class="material-icons">edit</i> &nbsp;&nbsp;
+                <% end %>
+
+            <%= link_to new_shift_job_path(shift_id: shift.id) do %>
+              <i class="material-icons">add</i> &nbsp;&nbsp;
+            <% end %>
+
+            <% if shift.status == "pending" %>
+              <%= link_to(shift_path(shift), method: :delete, data: { confirm: 'Are you sure you wish to delete this shift?' }) do %>
+                <i class="material-icons">delete</i>
+            <% end %>&nbsp;&nbsp
+          <% end %>
+
+            <%  end %>
+                
+            <div class="waves-effect waves-light btn">
+              <%= link_to "View Shift", shift_path(shift) %>
+              </div>
+
+              
+             
+
+
+            </td>
+
+
+
+            <td> 
+          </tr>
+        <% end %>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+      <%= will_paginate shifts, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<nav id="nav">
+  <div class="container">
+    <ul class="left hide-on-med-and-down">
+
+      <li><%= link_to 'My Info', employee_path(current_user) %></li>
+      <li><%= link_to ' My Shifts', shifts_path %></li>
+      
+    </ul>
+    <ul class="right">
+      <li><%= link_to 'Logout', logout_path %></li>
+    </ul>
+  </div>
+</nav>

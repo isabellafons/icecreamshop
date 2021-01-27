@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-content">
+    <h5>Upcoming Shifts</h5>
+
+    <% if @shifts_week.empty? %>
+      <p>There are no upcoming shifts at this time.</p>
+    <% else %>
+
+      <table class="striped highlight">
+        <thead>
+          <th>Employee</th>
+          <th>Date</th>
+          <th>Starting</th>
+          <th> Status </th>
+          <th> Options </th>
+        </thead>
+        <% for shift in @shifts_week %>
+          <tr %>
+            <td><%= link_to shift.employee.name, employee_path(shift.employee) %></td>
+            <td><%= shift.date.strftime("%-m/%-d") %></td>
+            <td><%= shift.start_time.strftime("%l:%M %P") %></td>
+            <td><%= shift.status %></td>
+            <td><div class="waves-effect waves-light btn">
+                  <%= link_to "View Shift", shift_path(shift) %>
+                  </div> </td>
+          </tr>
+        <% end %>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+    <% end %>
+  </div>
+</div>

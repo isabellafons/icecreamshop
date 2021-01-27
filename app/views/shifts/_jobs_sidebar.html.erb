@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-content">
+    <h5>Jobs Worked</h5>
+
+    <% if @shift_jobs.empty? %>
+      <p>There are no recorded jobs at this time.</p>
+    <% else %>
+
+      <table class="striped highlight">
+        <% @shift_jobs.each do |sj| %>
+          <tr >
+            <td><%=  link_to sj.job.name , job_path(sj.job)%></td>
+            <% if current_user.role?(:admin) || current_user.role?(:manager) %>
+                <td> <%= link_to(shift_job_path(sj), method: :delete, data: { confirm: 'Are you sure you wish to delete this job from the shift?' }) do %>
+                    <i class="material-icons">delete</i>
+                <% end %>&nbsp;&nbsp</td>
+            <% end %>
+          
+          </tr>
+        <% end %>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+    <% end %>
+  </div>
+</div>

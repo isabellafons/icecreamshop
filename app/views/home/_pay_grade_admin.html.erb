@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="card-content">
+
+  <h4> Active Pay Grades </h4>
+
+    <% if @pay_grades.empty? %>
+      <p>There are no active pay grades at this time.</p>
+   
+    <% else %>
+    
+      <table class="striped highlight">
+        <thead>
+          <th>Level</th>
+          <th> Options </th>
+          
+        </thead>
+        <% for pay_grade in @pay_grades %>
+          <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+          <% if pay_grade.active == true%>
+            <td><%= link_to pay_grade.level, pay_grade_path(pay_grade) %></td>
+            
+                <td>
+                <%= link_to edit_pay_grade_path(pay_grade) do %>
+                  <i class="material-icons">edit</i> &nbsp;&nbsp;&nbsp;
+                <% end %> 
+                <div class="waves-effect waves-light btn">
+                  <%= link_to "Add Rate", new_pay_grade_rate_path(pay_grade_id: pay_grade.id) %>
+                </div>
+                </td>
+            <% end %>
+
+
+          </tr>
+        <% end %>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+      
+    <% end %>
+  </div>
+</div>

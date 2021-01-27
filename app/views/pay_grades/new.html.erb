@@ -1,0 +1,22 @@
+
+<div class="row">
+<div class="col s8">
+  <h4>New Pay Grade </h4>
+  <%= simple_form_for(@pay_grade) do |f| %>
+    <%= f.error_notification %>
+    <div class="row">
+     
+    <div class="form-inputs">
+          <%= f.input :level %>
+          <%= f.input :active %>
+        </div>
+     
+    </div>
+    <div class="row">
+      <div class="form-actions col s8">
+        <%= f.button :submit %>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>

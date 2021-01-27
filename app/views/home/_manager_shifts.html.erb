@@ -1,0 +1,57 @@
+<div class="card">
+  <div class="card-content">
+  <h4>Past Shifts at AMC</h4>
+  
+    <% if @past.empty? %>
+      <p>There are no shifts at this time.</p>
+   
+    <% else %>
+
+      <table class="striped highlight">
+        <thead>
+          <th> Date </th>
+          <th>Employee</th>
+          <th> Store Name </th>
+          <th> Start Time </th>
+          <th> End Time </th>
+          <th> Status </th>
+
+          <% if current_user.role? (:manager) %>
+          <th class="align_center">Report</th>
+          <th class="align_center">View Details</th>
+          <%end%>
+        </thead>
+        <% for shift in @past %>
+          <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+            <td><%= link_to shift.date.strftime("%-m/%d/%y"), shift_path(shift) %></td>
+            <td><%=  shift.assignment.employee.name %></td>
+            <td><%=  shift.assignment.store.name %></td>
+            <td><%=  shift.start_time.strftime("%H:%M") %></td>
+            <td><%=  shift.end_time.strftime("%H:%M") %></td>
+            <td><%=  shift.status.capitalize %></td>
+
+            <% if current_user.role? (:manager) %>
+              
+
+                  <td> <div class="waves-effect waves-light btn">
+                  <%= link_to "Add Job", new_shift_job_path(shift_id: shift.id) %>
+                  </div></td>
+
+                   <td><div class="waves-effect waves-light btn">
+                  <%= link_to "View Shift", shift_path(shift) %>
+                  </div> </td>
+              
+            <%  end %>
+
+
+
+            <td> 
+          </tr>
+        <% end %>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+      <%= will_paginate @upcoming_shifts, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="card">
+  <div class="card-content">
+    <h4>Upcoming Shifts</h4>
+
+    <% if @upcoming_shifts.empty? %>
+      <p>Employee has no upcoming shifts.</p>
+   
+    <% else %>
+
+            <table class="striped highlight">
+                <thead>
+                <th> Date </th>
+                <th> Start Time </th>
+                <th> End Time </th>
+                <th> Status </th>
+                <th> Options </th>
+                </thead>
+                <% for shift in @upcoming_shifts %>
+                <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+                    <td><%=  shift.date.strftime("%-m/%d/%y") %></td>
+                    <td><%=  shift.start_time.strftime("%H:%M") %></td>
+                    <td><%=  shift.end_time.strftime("%H:%M") %></td>
+                    <td><%=  shift.status.capitalize %></td>
+                    <td><div class="waves-effect waves-light btn">
+                        <%= link_to "View Shift", shift_path(shift) %>
+                     </div> </td>
+                </tr>
+                <% end %>
+            </table>
+
+    <% end %>
+    
+
+    <h4> Past Shifts </h4>
+
+    <% if @upcoming_shifts.empty? %>
+      <p>Employee has no past shifts.</p>
+   
+    <% else %>
+
+            <table class="striped highlight">
+                <thead>
+                <th> Date </th>
+                <th> Start Time </th>
+                <th> End Time </th>
+                <th> Status </th>
+                <th> Options </th>
+                </thead>
+                <% for shift in @past_shifts %>
+                <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+                    <td><%=  shift.date.strftime("%-m/%d/%y") %></td>
+                    <td><%=  shift.start_time.strftime("%H:%M") %></td>
+                    <td><%=  shift.end_time.strftime("%H:%M") %></td>
+                    <td><%=  shift.status.capitalize %></td>
+                    <td><div class="waves-effect waves-light btn">
+                  <%= link_to "View Shift", shift_path(shift) %>
+                  </div> </td>
+                </tr>
+                <% end %>
+            </table>
+
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="card">
+  <div class="card-content">
+  <h4>Store Report at AMC</h4>
+  
+    <% if @active_stores.empty? %>
+      <p>There are no stores at this time.</p>
+   
+    <% else %>
+
+      <table class="striped highlight">
+        <thead>
+          <th> Store </th>
+          <th>Employees </th>
+          <th> Under 18</th>
+          <th> Managers </th>
+          <th> Options </th>
+        </thead>
+        <% for store in @active_stores %>
+          <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+            <td><%= link_to store.name, store_path(store) %></td>
+            <td><%=  store.employees.active.size %></td>
+            <td><%=  store.employees.younger_than_18.active.size %></td>
+            <td><%=  store.employees.managers.size %></td>
+           
+           <td> 
+             <div class="waves-effect waves-light btn">
+                  <%= link_to "Generate Payroll", payroll_generate_path(store) %>
+                </div>
+            </td>
+
+
+
+            <td> 
+          </tr>
+        <% end %>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+      
+    <% end %>
+  </div>
+</div>

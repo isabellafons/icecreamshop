@@ -1,0 +1,16 @@
+
+<%= render partial: 'partials/index_structure', locals: {model_name: 'shift', 
+                                                         primary: 'upcoming_shifts', 
+                                                         secondary: 'past_shifts',
+                                                         sidebar: nil} %>
+
+
+
+
+ <% if can? :new, Shift %>
+    <div class="waves-effect waves-light btn">
+     <div class="card-action">
+      <%= link_to "Add a new shift", new_shift_path(job: @shift) %>
+     </div>
+  </div>
+<% end %>

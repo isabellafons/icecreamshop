@@ -1,0 +1,42 @@
+<div class="card">
+  <div class="card-content">
+
+    <% if jobs.empty? %>
+      <p>There are no inactive jobs at this time.</p>
+   
+    <% else %>
+
+      <table class="striped highlight">
+        <thead>
+          <th>Name</th>
+          <% if current_user.role?(:admin) %>
+            <th> Options </th>
+          <% end %>
+
+         
+        </thead>
+        <% for job in jobs %>
+          <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+            <td><%= link_to job.name, job_path(job) %></td>
+
+            <% if current_user.role?(:admin) %>
+            <td>
+              <%= link_to edit_job_path(job) do %>
+                <i class="material-icons">edit</i>
+              <% end %>
+              <%= link_to(job_path(job), method: :delete, data: { confirm: 'Are you sure you wish to delete this job?' }) do %>
+                <i class="material-icons">delete</i>
+               <% end %>
+            </td>
+          </td>
+            <% end %> 
+
+          </tr>
+        <% end %>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+      <%= will_paginate jobs, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+    <% end %>
+  </div>
+</div>

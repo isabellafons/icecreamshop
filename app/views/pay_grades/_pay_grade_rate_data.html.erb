@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-content">
+    
+
+    <% if pay_grade_rates.nil? %>
+      <p>There are no <%= state.downcase %> pay grades at this time.</p>
+    <% else %>
+        
+      <table class="striped highlight">
+      
+        <thead>
+          <th>Rate</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+        </thead>
+        <% for pay_grade_rate in pay_grade_rates %>
+          <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+            <td><%= pay_grade_rate.rate %></td>
+            <td><%= pay_grade_rate.start_date.strftime("%-m/%d/%y") %></td>
+            <td><%= pay_grade_rate.end_date  %></td>
+          </tr>
+        <% end %>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+      
+    <% end %>
+  </div>
+</div>

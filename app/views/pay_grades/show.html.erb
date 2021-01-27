@@ -1,0 +1,17 @@
+<%= render partial: "partials/structure1", locals: {model_name: "pay_grade", 
+                                                         object: @pay_grade,
+                                                         primary: 'pay_grade_rates_list', 
+                                                         secondary: nil,
+                                                         sidebar: nil} %>
+
+ <%= link_to(pay_grades_path, class: 'waves-effect waves-light btn') do %>
+   Display All PayGrades
+    <% end %>
+      &nbsp;&nbsp;                                                        
+  <% if can? :new, PayGradeRate %>
+     <div class="waves-effect waves-light btn">
+     <div class="card-action">
+    <%= link_to "Add a new rate", new_pay_grade_rate_path(pay_grade_id: @pay_grade.id) %>
+     </div>
+    </div>
+<% end %>

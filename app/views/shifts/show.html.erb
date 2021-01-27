@@ -1,0 +1,44 @@
+
+<div class="row">
+<div class="col s8">
+ <!-- primary partial gets displayed here in main div -->
+   <%= render partial: "shift_details" %>
+                                                        
+   </div>
+  <div class="col s4">
+  
+   <%= render partial: "jobs_sidebar" %>
+ </div>
+</div>
+<div class="row">
+
+<% if can? :new, ShiftJob %>
+<div class="waves-effect waves-light btn">
+<div class="card-action">
+<%= link_to "Add a new job", new_shift_job_path(shift_id: @shift.id) %>
+</div>
+</div>
+<% end %>
+&nbsp;&nbsp;
+
+<% if can? :edit, Shift %>
+<div class="waves-effect waves-light btn">
+ <div class="card-action">
+  <%= link_to "Edit this shift", edit_shift_path(shift: @shift) %>
+ </div>
+</div>
+<% end %>&nbsp;&nbsp;
+
+<% if (can? :destroy, Shift ) && (@shift.status=="pending") %>
+<div class="waves-effect waves-light btn">
+ 
+ <%= link_to(shift_path(@shift), method: :delete, data: {confirm: "Are you sure you want to permanently delete this shift"}, class: 'waves-effect waves-light btn btn-alert') do %>
+ &nbsp;<%= "Delete Shift" %>
+ <% end %>
+
+</div>
+<% end %>
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+
+

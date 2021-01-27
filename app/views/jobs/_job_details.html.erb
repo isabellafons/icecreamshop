@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-content">
+    <h4><%= @job.name %> Details</h4>
+
+    <b>Description:&nbsp;&nbsp;</b><br>
+      <%= @job.description %><br /><br />
+
+
+    <b>Active?&nbsp;&nbsp;</b>
+      <%= @job.active ? "Yes" : "No" %>
+      <br>
+  </div>
+</div>
+
+<%= link_to(jobs_path, class: 'waves-effect waves-light btn') do %>
+    &nbsp;Display All Jobs
+<% end %>
+
+<% if current_user.role?(:admin) %>
+
+  <%= link_to(edit_job_path(@job), class: 'waves-effect waves-light btn') do %>
+      &nbsp;Edit Job Details
+  <% end %>
+
+
+
+  <div class="waves-effect waves-light btn">
+ 
+  <%= link_to(job_path(@job), method: :delete, data: {confirm: "Are you sure you want to permanently delete this shift"}, class: 'waves-effect waves-light btn btn-alert') do %>
+  &nbsp;<%= "Delete Job" %>
+  <% end %>
+
+<% end %>

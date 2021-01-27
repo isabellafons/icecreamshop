@@ -1,0 +1,49 @@
+<nav id="nav">
+
+  <div class="container">
+    <ul class="left hide-on-med-and-down">
+    <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content">
+        <li><%= link_to "List Assignments", assignments_path %></li>
+        <li><%= link_to "Add Assignment", new_assignment_path %></li>
+        </ul>
+        <ul id="dropdown2" class="dropdown-content">
+        <li><%= link_to "List Employees", employees_path %></li>
+        <li><%= link_to "Add Employee", new_employee_path %></li>
+        </ul>
+        <ul id="dropdown3" class="dropdown-content">
+        <li><%= link_to "List Jobs", jobs_path %></li>
+        <li><%= link_to "Add Job", new_job_path %></li>
+        </ul>
+        <ul id="dropdown4" class="dropdown-content">
+        <li><%= link_to "List Pay Grades", pay_grades_path %></li>
+        <li><%= link_to "Add Pay Grade", new_pay_grade_path %></li>
+        </ul>
+        <ul id="dropdown5" class="dropdown-content">
+        <li><%= link_to "List Shifts", shifts_path %></li>
+        <li><%= link_to "Add Shift", new_shift_path %></li>
+        </ul>
+        <ul id="dropdown6" class="dropdown-content">
+        <li><%= link_to "List Stores", stores_path %></li>
+        <li><%= link_to "Add Store", new_store_path %></li>
+        </ul>
+
+        <nav>
+          <div class="nav-wrapper">
+              <!-- Dropdown Trigger -->
+              <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Assignments<i class="material-icons right">arrow_drop_down</i></a></li>
+              <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Employees<i class="material-icons right">arrow_drop_down</i></a></li>
+              <li><a class="dropdown-trigger" href="#!" data-target="dropdown3">Jobs<i class="material-icons right">arrow_drop_down</i></a></li>
+              <li><a class="dropdown-trigger" href="#!" data-target="dropdown4">Pay Grades<i class="material-icons right">arrow_drop_down</i></a></li>
+              <li><a class="dropdown-trigger" href="#!" data-target="dropdown5">Shifts<i class="material-icons right">arrow_drop_down</i></a></li>
+              <li><a class="dropdown-trigger" href="#!" data-target="dropdown6">Stores<i class="material-icons right">arrow_drop_down</i></a></li>
+              </ul>
+          </div>
+        
+      </ul>
+    <ul >
+      <li><%= link_to 'Logout', logout_path %></li>
+    </ul>
+  </div>
+</div>
+</nav>

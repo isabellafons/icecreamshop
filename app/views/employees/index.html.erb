@@ -1,0 +1,14 @@
+<% if logged_in? &&  current_user.role?(:admin) || current_user.role?(:manager)  %>  
+    <%= render :partial => "partials/title_with_search", locals: {title: "Employees at AMC"} %>
+<% end %>   
+
+
+<%= render partial: 'partials/index_structure', locals: {model_name: 'employee', 
+                                                         primary: 'active_lists', 
+                                                         secondary: 'inactive_employees',
+                                                         sidebar: nil} %>
+
+
+<% if logged_in? &&  current_user.role?(:admin)  %>                                                       
+    <%= render :partial => 'partials/add_new_object', locals: {model_name: 'employee'} %>
+<% end %>

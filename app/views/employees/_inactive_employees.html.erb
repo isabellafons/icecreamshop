@@ -1,0 +1,5 @@
+<% if logged_in? &&  current_user.role?(:admin)  %>  
+    <%= render partial: 'employee_lists', locals: {employees: @inactive_employees, role: 'employees', state: 'inactive'} %>
+<% elsif logged_in? && current_user.role?(:manager) %>
+    <%= render partial: 'employee_lists_manager', locals: {employees: @inactive_employees, state: 'inactive', role: 'employees'} %>
+<% end %>

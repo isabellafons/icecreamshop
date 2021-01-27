@@ -1,0 +1,16 @@
+<h4>  Welcome <%=  current_user.proper_name %>! </h4>
+
+<% if logged_in? &&  current_user.role?(:admin) || current_user.role?(:manager)  %>  
+    <%= render :partial => "partials/title_with_search", locals: {title: "Employees at AMC"} %>
+<% end %> 
+
+
+
+  <%= render partial: 'partials/index_structure_three', locals: {model_name: 'home',
+                primary: 'shift_list', 
+                secondary: 'manager_shifts',
+                tertiary: 'today_shifts',
+                sidebar: 'manager_sidebar',
+                sidebar2: 'pay_sidebar'} %>                                                        
+
+

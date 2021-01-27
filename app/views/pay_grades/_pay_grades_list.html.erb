@@ -1,0 +1,43 @@
+<h4> <%= state.capitalize %> Pay Grades</h4>
+
+<div class="card">
+
+
+  <div class="card-content">
+
+    <% if pay_grades.empty? %>
+      <p>There are no <%= state.downcase %> pay grades at this time.</p>
+   
+    <% else %>
+    
+      <table class="striped highlight">
+        <thead>
+          <th>Level</th>
+          <% if state == 'active' %>
+          <th> Options </th>
+          <% end %>
+        </thead>
+        <% for pay_grade in pay_grades %>
+          <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+            <td><%= link_to pay_grade.level, pay_grade_path(pay_grade) %></td>
+            <% if state == 'active'%>
+                <td>
+                <%= link_to edit_pay_grade_path(pay_grade) do %>
+                  <i class="material-icons">edit</i> &nbsp;&nbsp;&nbsp;
+                <% end %> 
+                <div class="waves-effect waves-light btn">
+                  <%= link_to "Add Rate", new_pay_grade_rate_path(pay_grade_id: pay_grade.id) %>
+                </div>
+                </td>
+            <% end %>
+
+
+          </tr>
+        <% end %>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+      <%= will_paginate pay_grades, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+
+<h4>  Welcome <%=  current_user.proper_name %>! </h4>
+
+
+
+<%= render partial: 'index_structure', locals: {model_name: 'home',
+                                                         primary: 'today_shifts', 
+                                                         secondary: 'shift_list',
+                                                         sidebar: 'pay_sidebar'} %>

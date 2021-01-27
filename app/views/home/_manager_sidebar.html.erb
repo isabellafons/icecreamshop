@@ -1,0 +1,44 @@
+
+
+<% unless @active_stores.empty? %>
+<div class="card">
+  <div class="card-content">
+    <h5> Assigned Employees (Next 7 Days) </h5>
+
+    <% if @active_employees.empty? %> 
+      No employees assigned this week!
+    
+    <% else %>
+      <table class="striped highlight">
+        <thead>
+          <th>Name</th>
+        
+        
+        </thead>
+        <% @active_employees.each do |emp| %>
+          <tr %>
+            <td><%= link_to emp.name, employee_path(emp) %></td>
+            
+
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+
+    <div class="waves-effect waves-light btn">
+      <%= link_to "Add Shift", new_shift_path() %>
+     </div>
+
+    <p class="supertiny"></p>
+    <br />
+  </div>
+  <div class="card-action">
+   
+</div>
+<% else %>
+<div class="card grey lighten-3">
+  <div class="card-action">
+    
+  </div>
+</div>
+<% end %>

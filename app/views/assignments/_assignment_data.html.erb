@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-content">
+    <h4>Assignment for <%= @assignment.employee.proper_name %></h4>
+
+    <b>Store:&nbsp;&nbsp;</b><br>
+      <%= @assignment.store.name %><br /><br />
+
+    <b>Start Date:&nbsp;&nbsp;</b><br>
+      <%= @assignment.start_date.strftime("%b %d, %Y") %><br /><br />
+
+      <b>Pay Level&nbsp;&nbsp;</b>
+      <%= @assignment.pay_grade.level %><br /><br />
+      <br>
+
+    <% if !(@assignment.end_date.nil?) %>
+    <b>End Date:&nbsp;&nbsp;</b><br>
+        <%= @assignment.end_date.strftime("%b %d, %Y") %><br /><br />
+    <% else %>
+        This is the employee's current assignment
+    <% end %>
+   
+  </div>
+</div>

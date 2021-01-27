@@ -1,0 +1,30 @@
+<div class  = "card">
+    <div class = "card-content">
+        <h4><b></b>
+        Shift for <%=  link_to @shift.employee.proper_name, employee_path(@shift.employee) %>  on <br><%=  @shift.date.strftime("%b %d, %C%y")%>   </h4>
+    
+        <b> Store: </b><br>
+        <%= @shift.store.name%><br> 
+        
+        <b> Start Time: </b><br>
+        <%= @shift.start_time.strftime("%H:%M")%><br>
+
+        <b> End Time: </b><br>
+        <%= @shift.end_time.strftime("%H:%M")%><br>
+
+        <b> Notes: </b><br>
+        <%= @shift.notes %><br>
+
+        <b> Status: </b><br>
+        <%= @shift.status %><br>
+
+        
+
+        <br><br>
+       
+    </div>
+</div>
+
+
+
+

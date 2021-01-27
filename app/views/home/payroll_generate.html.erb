@@ -1,0 +1,14 @@
+
+<div class="col s7">
+  <h4>Title</h4><br>
+
+
+
+      <%= form_with url: new_payroll_calc_form_path, method: :post, local: true, class: "form-inline", id: "payroll_date" do %>
+          <%= date_field_tag 'start_date', '', placeholder: "01/02/2000" %>
+          <%= date_field_tag 'end_date', '', placeholder: "01/01/2000 " %>
+          <input type="submit" value="Submit">
+      <% end %>
+
+
+</div>

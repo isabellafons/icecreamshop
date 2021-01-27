@@ -1,0 +1,13 @@
+<h5>Search result for term <em>'<%= @query %>'</em> resulted in <%= pluralize(@total_hits, 'hit') %></h5>
+<p class="supertiny">&nbsp;</p>
+
+<% unless @employees.empty? %>
+  <p><em><strong>Employees matching term '<%= @query %>'</strong></em></p>
+  <ul>
+    <% for owner in @employees do %>
+      <li><%= link_to employee.name, employee_path(employee) %></li>
+    <% end %>
+  </ul>
+  <p class="smtext">&nbsp;</p>
+<% end %>
+

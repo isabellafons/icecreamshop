@@ -1,0 +1,12 @@
+<% if current_user.role?(:admin) %>
+            <%= f.input :assignment_id, collection: Assignment.current.chronological.map{|a| [a.employee.name, a.id]}.sort%>
+          <% elsif current_user.role?(:manager) %>
+            <%= f.input :assignment_id, collection: current_user.current_assignment.store.assignments.current.chronological.map{|a| [a.employee.name, a.id]}.sort%>
+<% end %>
+
+
+<%= f.input :date %>
+<%= f.input :start_time, input_html: { class: 'timepicker'}%>
+<%= f.input :end_time, input_html: { class: 'timepicker'} %>
+<%= f.input :notes %>
+<%= f.input :status, collection: %w[started pending finished] %>

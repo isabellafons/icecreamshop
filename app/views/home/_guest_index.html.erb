@@ -1,0 +1,41 @@
+
+    <div id = "welcome_logo" ><%= image_tag 'tamulogo.png' , class: 'img_center'%></div>
+
+    <div class = "row">
+    <div id = "welcome">
+    <div id = "welcome_serving">   <p> Welcome to The A&M Creamery, a Pittsburgh-based creamery serving<br>
+         the best ice cream in Pennsylvania! Using locally sourced dairy and seasonal<br>
+         ingredients, The A&M Creamery is sure to fill your ice cream dreams. Now<br>
+         serving our new Vegan Oat Milk Flavors!  </p></div><br>
+    </div>
+</div>
+
+
+   <div id = "welcome_serving"><h4> CURRENTLY SCOOPING </h4></div>
+     <div class="carousel"> 
+        <a class="carousel-item" href="#one"><%= image_tag 'best_chocolate_text.jpg' %></a>
+        <a class="carousel-item" href="#two"><%= image_tag 'coffee_text.jpg' %></a>
+        <a class="carousel-item" href="#three"><%= image_tag 'cookie_dough_text.jpg' %></a>
+        <a class="carousel-item" href="#four"><%= image_tag 'brown_sugar_chunk_text.jpg' %></a>
+        <a class="carousel-item" href="#five"><%= image_tag 'mint_chip_text.jpg' %></a>
+        <a class="carousel-item" href="#six"><%= image_tag 'morning_oat_text.jpg' %></a>
+        <a class="carousel-item" href="#seven"><%= image_tag 'peanut_butter_text.jpg' %></a>
+        <a class="carousel-item" href="#eight"><%= image_tag 'pistachio_text.jpg' %></a>
+        <a class="carousel-item" href="#nine"><%= image_tag 'brownie_batter_text.jpg' %></a>
+        <a class="carousel-item" href="#ten"><%= image_tag 'vanilla_text.jpg' %></a>
+     </div>
+
+    
+    
+     <div id = "welcome_serving"><h4> OUR CREAMERIES </h4><br>
+        <div id = "cream-list">
+            <% for store in Store.active.alphabetical%>
+                <ul>  <%= link_to store.name, store_path(store) %> </ul>
+            <% end %>  
+        </div<
+    </div><br><br>
+            
+            
+     
+    
+    

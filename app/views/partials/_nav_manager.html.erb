@@ -1,0 +1,35 @@
+<nav id="nav">
+
+  <div class="container">
+    <ul class="left hide-on-med-and-down">
+    <!-- Dropdown Structure -->
+        <ul id="dropdown2" class="dropdown-content">
+        <li><%= link_to "List Employees", employees_path %></li>
+       
+        </ul>
+        <ul id="dropdown3" class="dropdown-content">
+        <li><%= link_to "List Jobs", jobs_path %></li>
+       
+        </ul>
+        <ul id="dropdown5" class="dropdown-content">
+        <li><%= link_to "List Shifts", shifts_path %></li>
+        <li><%= link_to "Add Shift", new_shift_path %></li>
+        </ul>
+
+        <nav>
+          <div class="nav-wrapper">
+              <!-- Dropdown Trigger -->
+              <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Employees<i class="material-icons right">arrow_drop_down</i></a></li>
+              <li><a class="dropdown-trigger" href="#!" data-target="dropdown3">Jobs<i class="material-icons right">arrow_drop_down</i></a></li>
+              <li><a class="dropdown-trigger" href="#!" data-target="dropdown5">Shifts<i class="material-icons right">arrow_drop_down</i></a></li>
+              </ul>
+         
+        
+      </ul>
+    <ul class="right">
+      <li><%= link_to 'Logout', logout_path %></li>
+    </ul>
+    </div>
+  </div>
+</div>
+</nav>

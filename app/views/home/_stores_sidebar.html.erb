@@ -1,0 +1,39 @@
+
+
+<% unless @active_stores.empty? %>
+<div class="card">
+  <div class="card-content">
+    <h5> Active Stores</h5>
+
+    <table class="striped highlight">
+      <thead>
+        <th>Name</th>
+        <th class="align_center">Options</th>
+       
+      </thead>
+      <% @active_stores.each do |store| %>
+        <tr %>
+          <td><%= link_to store.name, store_path(store) %></td>
+           
+          <td>
+          <%= link_to payroll_generate_path(store) do %>
+            <i class="material-icons">edit</i>
+          <% end %>
+          </td>
+
+        </tr>
+      <% end %>
+    </table>
+    <p class="supertiny"></p>
+    <br />
+  </div>
+  <div class="card-action">
+   
+</div>
+<% else %>
+<div class="card grey lighten-3">
+  <div class="card-action">
+    
+  </div>
+</div>
+<% end %>

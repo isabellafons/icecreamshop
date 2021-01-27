@@ -1,0 +1,12 @@
+<%= render partial: 'partials/index_structure', locals: {model_name: 'job', 
+                                                         primary: 'active_lists', 
+                                                         secondary: 'inactive_jobs',
+                                                         sidebar: nil} %>
+
+<% if can? :new, Job %>
+    <div class="waves-effect waves-light btn">
+    <div class="card-action">
+    <%= link_to "Add a new job", new_job_path(job: @job) %>
+  </div>
+</div>
+<% end %>

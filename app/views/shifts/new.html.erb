@@ -1,0 +1,32 @@
+
+<div class="row">
+<div class="col s8">
+  <h4>Add a new shift</h4>
+  <%= simple_form_for(@shift) do |f| %>
+    <%= f.error_notification %>
+    <div class="row">
+     
+    <div class="form-inputs">
+          <% if current_user.role?(:admin) %>
+            <%= f.input :assignment_id, collection: Assignment.current.chronological.map{|a| [a.employee.name, a.id]}.sort%>
+          <% elsif current_user.role?(:manager) %>
+            <%= f.input :assignment_id, collection: current_user.current_assignment.store.assignments.current.chronological.map{|a| [a.employee.name, a.id]}.sort%>
+          <% end %>
+          <%= f.input :date %>
+          <%= f.input :start_time, input_html: { class: 'timepicker'}%>
+          <%= f.input :end_time, input_html: { class: 'timepicker'} %>
+          <%= f.input :notes %>
+          <%= f.input :status, collection: %w[started pending finished] %>
+
+
+        </div>
+     
+    </div>
+    <div class="row">
+      <div class="form-actions col s8">
+        <%= f.button :submit %>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>
